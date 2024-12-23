@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <script>
+        const socket = new WebSocket('ws://localhost:8088/ws');
+
+        socket.onopen = () => {
+            console.log('Connected to server');
+            socket.send("data:{'name':1}\n\n");
+        };
+
+        socket.onmessage = (event) => {
+            console.log('Message from server: ', event.data);
+        };
+
+        socket.onclose = () => {
+            console.log('Disconnected from server');
+        };
+    </script>
+</body>
+</html>
